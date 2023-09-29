@@ -1,3 +1,4 @@
+NOTE: This Project is not completed yet!
 # Lottery-dApp
 A Beginner's Level Decentralized Lottery Application 
 
