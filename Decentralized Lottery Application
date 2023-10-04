@@ -20,4 +20,8 @@ contract Lottery{
     require(msg.sender == manager);
     return address(this).balance;
     }
+
+ function random() public view returns (uint){ //function for random number generation, NOTE: try not to use this function in Real Life Project
+    return uint(keccak256(abi.encodePacked(block.difficulty,block.timestamp,participants.length)));
+    }
 }
