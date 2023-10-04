@@ -18,10 +18,22 @@ contract Lottery{
     function getBalance() public view returns(uint)
     {
     require(msg.sender == manager);
-    return address(this).balance;
+    return address(this).balance;               
     }
 
- function random() public view returns (uint){ //function for random number generation, NOTE: try not to use this function in Real Life Project
-    return uint(keccak256(abi.encodePacked(block.difficulty,block.timestamp,participants.length)));
+    function random() public view returns (uint){ //function for random number generation,NOTE: try not to use this function in Real Life Project
+    return uint(keccak256(abi.encodePacked(block.timestamp,participants.length)));
     }
+
+   function Winner() public view returns (address) {
+    require(msg.sender == manager);
+    require(participants.length >= 3);
+
+    uint r = random();
+    uint index = r % participants.length;
+    address payable winner = participants[index];
+    
+    return winner;
 }
+
+}       
